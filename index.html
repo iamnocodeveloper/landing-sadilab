@@ -51,7 +51,11 @@
     background:linear-gradient(135deg,var(--teal),var(--blue));
     display:grid;place-items:center;color:#fff;font-size:1rem;font-weight:800;
   }
-  .brand span{color:var(--teal-dark)}
+  .brand .nm{color:var(--ink);display:inline-flex;gap:0}
+  .brand .nm span{color:var(--teal-dark)}
+  .ico svg,.ic svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+  .loc-item .ic svg{width:22px;height:22px}
+  .ic svg{color:var(--teal-dark)}
   .nav-links{display:none;gap:26px;font-size:.93rem;font-weight:500;color:var(--muted)}
   .nav-links a:hover{color:var(--teal-dark)}
   .btn{
@@ -304,7 +308,7 @@
 
 <header>
   <div class="wrap nav">
-    <div class="brand"><div class="dot">S</div>Sadi<span>Lab</span></div>
+    <div class="brand"><div class="dot">S</div><span class="nm">Sadi<span>Lab</span></span></div>
     <nav class="nav-links">
       <a href="#servicios">Servicios</a>
       <a href="#agenda">Reservar turno</a>
@@ -320,7 +324,7 @@
 <section class="hero">
   <div class="wrap hero-grid">
     <div>
-      <span class="pill">⭐ 5.0 en Google · 62 reseñas</span>
+      <span class="pill"><svg width="15" height="15" viewBox="0 0 24 24" fill="#ffd166" stroke="none"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5-5.9-3.2-5.9 3.2 1.2-6.5L2.5 9.4l6.6-.9z"/></svg> 5.0 en Google · 62 reseñas</span>
       <h1>Su salud, con resultados <em>claros y a tiempo</em></h1>
       <p class="lead">Laboratorio Clínico &amp; Consultorios Médicos SadiLab. Análisis clínicos, consulta médica y toma de muestras en Cuenca, con atención cercana y profesional.</p>
       <div class="hero-cta">
@@ -336,19 +340,19 @@
     <div class="hero-card">
       <h3>Información rápida</h3>
       <div class="row">
-        <div class="ico">📍</div>
+        <div class="ico"><svg viewBox="0 0 24 24"><path d="M12 21s7-6.1 7-11a7 7 0 1 0-14 0c0 4.9 7 11 7 11z"/><circle cx="12" cy="10" r="2.6"/></svg></div>
         <div><strong>Vía Monay Baguanchi Paccha</strong><small>010101 Cuenca, Ecuador</small></div>
       </div>
       <div class="row">
-        <div class="ico">🕒</div>
+        <div class="ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
         <div><strong>Lun a Vie: 07:00 – 20:00</strong><small>Sábados: 08:00 – 14:00</small></div>
       </div>
       <div class="row">
-        <div class="ico">🩺</div>
+        <div class="ico"><svg viewBox="0 0 24 24"><path d="M6 3v5a5 5 0 0 0 10 0V3"/><path d="M11 13v3a4 4 0 0 0 4 4 3 3 0 0 0 3-3v-2"/><circle cx="18" cy="12" r="2"/><path d="M4 3h3M15 3h3"/></svg></div>
         <div><strong>Consulta médica</strong><small>4 bloques de atención de lunes a viernes</small></div>
       </div>
       <div class="row">
-        <div class="ico">📞</div>
+        <div class="ico"><svg viewBox="0 0 24 24"><path d="M6.5 3h3l1.5 4.5-2 1.5a12 12 0 0 0 6 6l1.5-2L21 14.5v3A2.5 2.5 0 0 1 18.5 20 16 16 0 0 1 4 5.5A2.5 2.5 0 0 1 6.5 3z"/></svg></div>
         <div><strong>+593 96 340 4408</strong><small>Teléfono y WhatsApp</small></div>
       </div>
     </div>
@@ -366,7 +370,7 @@
 
     <div class="cards">
       <div class="card reveal">
-        <div class="ic">🧪</div>
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M9 3h6M10 3v6L5 18a2 2 0 0 0 1.8 3h10.4A2 2 0 0 0 19 18l-5-9V3"/><path d="M7.5 14h9"/></svg></div>
         <h3>Laboratorio Clínico</h3>
         <p>Análisis de laboratorio realizados con procesos cuidados y equipos adecuados.</p>
         <ul>
@@ -376,7 +380,7 @@
         </ul>
       </div>
       <div class="card reveal">
-        <div class="ic">🩺</div>
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M6 3v5a5 5 0 0 0 10 0V3"/><path d="M11 13v3a4 4 0 0 0 4 4 3 3 0 0 0 3-3v-2"/><circle cx="18" cy="12" r="2"/><path d="M4 3h3M15 3h3"/></svg></div>
         <h3>Consulta Médica</h3>
         <p>Atención médica en consultorios, con horarios amplios de lunes a viernes.</p>
         <ul>
@@ -386,7 +390,7 @@
         </ul>
       </div>
       <div class="card reveal">
-        <div class="ic">💉</div>
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M17 3l4 4M14 6l4 4-9 9H5v-4l9-9zM3 21l3-3"/></svg></div>
         <h3>Toma de Muestras</h3>
         <p>Personal capacitado para una toma de muestras cómoda y segura.</p>
         <ul>
@@ -538,15 +542,15 @@
     <div class="loc">
       <div class="loc-info reveal">
         <div class="loc-item">
-          <div class="ic">📍</div>
+          <div class="ic"><svg viewBox="0 0 24 24"><path d="M12 21s7-6.1 7-11a7 7 0 1 0-14 0c0 4.9 7 11 7 11z"/><circle cx="12" cy="10" r="2.6"/></svg></div>
           <div><strong>Dirección</strong><span>Vía Monay Baguanchi Paccha, 010101 Cuenca, Ecuador</span></div>
         </div>
         <div class="loc-item">
-          <div class="ic">📞</div>
+          <div class="ic"><svg viewBox="0 0 24 24"><path d="M6.5 3h3l1.5 4.5-2 1.5a12 12 0 0 0 6 6l1.5-2L21 14.5v3A2.5 2.5 0 0 1 18.5 20 16 16 0 0 1 4 5.5A2.5 2.5 0 0 1 6.5 3z"/></svg></div>
           <div><strong>Teléfono / WhatsApp</strong><span>+593 96 340 4408</span></div>
         </div>
         <div class="loc-item">
-          <div class="ic">🕒</div>
+          <div class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
           <div><strong>Horario</strong><span>Lun a Vie 07:00–20:00 · Sáb 08:00–14:00</span></div>
         </div>
         <a class="btn btn-primary" href="https://maps.google.com/?cid=11714711941040280384" target="_blank" rel="noopener" style="justify-self:start;margin-top:8px">Ver en Google Maps</a>
@@ -568,7 +572,7 @@
   <div class="wrap">
     <div class="foot-grid">
       <div>
-        <div class="foot-brand"><div class="dot">S</div>SadiLab</div>
+        <div class="foot-brand"><div class="dot">S</div><span class="nm">Sadi<span style="color:#7ff0e0">Lab</span></span></div>
         <p style="max-width:330px">Laboratorio Clínico &amp; Consultorios Médicos. Análisis clínicos, consulta médica y toma de muestras en Cuenca, Ecuador.</p>
       </div>
       <div>
@@ -654,7 +658,7 @@
     out.className = 'confirm show';
     out.style.background = '#eafaf0';
     out.style.borderColor = '#b9e9cd';
-    out.innerHTML = '<strong>✔ Turno registrado (demostración)</strong><br>' +
+    out.innerHTML = '<strong>✓ Turno registrado (demostración)</strong><br>' +
       nombre + ' · ' + servicio + '<br>' + fechaTxt + ' · ' + selected +
       '<br><span style="color:#5b7183;font-size:.84rem">En la versión final el turno se confirma automáticamente y se avisa por WhatsApp.</span>';
   });
