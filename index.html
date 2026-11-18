@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SadiLab | Laboratorio Clínico y Consultorios Médicos en Cuenca</title>
+<meta name="description" content="Laboratorio Clínico & Consultorios Médicos SadiLab en Cuenca, Ecuador. Análisis clínicos, consulta médica y toma de muestras. Reserve su turno en línea.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --teal:#0d9488;
+    --teal-dark:#0f766e;
+    --blue:#0b4f7a;
+    --blue-deep:#083a5c;
+    --aqua:#e6f7f5;
+    --ink:#0d2438;
+    --muted:#5b7183;
+    --line:#e3eef0;
+    --white:#ffffff;
+    --radius:18px;
+    --shadow:0 18px 45px -20px rgba(8,58,92,.35);
+    --shadow-sm:0 8px 24px -14px rgba(8,58,92,.4);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Plus Jakarta Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+    color:var(--ink);
+    background:var(--white);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  img{max-width:100%;display:block}
+  a{text-decoration:none;color:inherit}
+  .wrap{width:100%;max-width:1120px;margin:0 auto;padding:0 20px}
+
+  /* ---------- Header ---------- */
+  header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(255,255,255,.85);
+    backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{display:flex;align-items:center;justify-content:space-between;height:68px}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:1.15rem;letter-spacing:-.02em}
+  .brand .dot{
+    width:34px;height:34px;border-radius:11px;
+    background:linear-gradient(135deg,var(--teal),var(--blue));
+    display:grid;place-items:center;color:#fff;font-size:1rem;font-weight:800;
+  }
+  .brand span{color:var(--teal-dark)}
+  .nav-links{display:none;gap:26px;font-size:.93rem;font-weight:500;color:var(--muted)}
+  .nav-links a:hover{color:var(--teal-dark)}
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:8px;
+    padding:12px 20px;border-radius:999px;font-weight:700;font-size:.92rem;
+    border:none;cursor:pointer;transition:.22s ease;font-family:inherit;
+  }
+  .btn-wa{background:#25d366;color:#053d1e}
+  .btn-wa:hover{transform:translateY(-2px);box-shadow:0 12px 24px -10px rgba(37,211,102,.8)}
+  .btn-primary{background:linear-gradient(135deg,var(--teal),var(--blue));color:#fff;box-shadow:var(--shadow-sm)}
+  .btn-primary:hover{transform:translateY(-2px)}
+  .btn-ghost{background:#fff;color:var(--blue);border:1.5px solid var(--line)}
+  .btn-ghost:hover{border-color:var(--teal);color:var(--teal-dark)}
+  .nav .btn-wa{padding:10px 16px;font-size:.85rem}
+
+  /* ---------- Hero ---------- */
+  .hero{
+    position:relative;
+    background:
+      linear-gradient(160deg,rgba(8,58,92,.94) 0%,rgba(15,118,110,.86) 100%),
+      url('https://images.unsplash.com/photo-1582719471384-894fbb16e074?auto=format&fit=crop&w=1600&q=70') center/cover;
+    color:#fff;padding:64px 0 78px;overflow:hidden;
+  }
+  .hero::after{
+    content:"";position:absolute;bottom:-1px;left:0;right:0;height:70px;
+    background:var(--white);clip-path:polygon(0 100%,100% 100%,100% 0);
+  }
+  .hero-grid{display:grid;gap:40px;position:relative;z-index:2}
+  .pill{
+    display:inline-flex;align-items:center;gap:8px;
+    background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.3);
+    padding:7px 15px;border-radius:999px;font-size:.8rem;font-weight:600;
+    backdrop-filter:blur(6px);
+  }
+  .hero h1{font-size:2.15rem;line-height:1.12;letter-spacing:-.03em;font-weight:800;margin:20px 0 16px}
+  .hero h1 em{font-style:normal;color:#7ff0e0}
+  .hero p.lead{font-size:1.03rem;color:rgba(255,255,255,.9);max-width:520px}
+  .hero-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+  .stars{display:flex;align-items:center;gap:10px;margin-top:30px;font-size:.88rem;font-weight:600}
+  .stars .s{color:#ffd166;font-size:1.05rem;letter-spacing:2px}
+  .hero-card{
+    background:rgba(255,255,255,.1);
+    border:1px solid rgba(255,255,255,.22);
+    border-radius:22px;padding:22px;backdrop-filter:blur(10px);
+  }
+  .hero-card h3{font-size:1rem;margin-bottom:16px;font-weight:700}
+  .hero-card .row{display:flex;gap:12px;padding:11px 0;border-bottom:1px solid rgba(255,255,255,.14);font-size:.87rem;align-items:flex-start}
+  .hero-card .row:last-child{border-bottom:none;padding-bottom:0}
+  .hero-card .ico{
+    width:34px;height:34px;border-radius:10px;background:rgba(255,255,255,.16);
+    display:grid;place-items:center;flex:0 0 34px;font-size:.95rem;
+  }
+  .hero-card strong{display:block;font-size:.9rem}
+  .hero-card small{color:rgba(255,255,255,.75);font-size:.79rem}
+
+  /* ---------- Sections ---------- */
+  section{padding:64px 0}
+  .sec-tag{
+    display:inline-block;color:var(--teal-dark);font-weight:700;font-size:.78rem;
+    letter-spacing:.14em;text-transform:uppercase;margin-bottom:10px;
+  }
+  h2.sec-title{font-size:1.72rem;letter-spacing:-.025em;line-height:1.18;font-weight:800;margin-bottom:12px}
+  .sec-sub{color:var(--muted);max-width:600px;font-size:.98rem}
+  .center{text-align:center}
+  .center .sec-sub{margin-left:auto;margin-right:auto}
+
+  /* reveal animation */
+  .reveal{opacity:0;transform:translateY(28px);transition:opacity .7s cubic-bezier(.2,.7,.3,1),transform .7s cubic-bezier(.2,.7,.3,1)}
+  .reveal.in{opacity:1;transform:none}
+
+  /* ---------- Cards / services ---------- */
+  .cards{display:grid;gap:20px;margin-top:38px}
+  .card{
+    background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+    padding:26px;box-shadow:var(--shadow-sm);transition:.25s ease;
+  }
+  .card:hover{transform:translateY(-5px);box-shadow:var(--shadow);border-color:#c8e9e4}
+  .card .ic{
+    width:52px;height:52px;border-radius:15px;display:grid;place-items:center;
+    font-size:1.4rem;background:var(--aqua);margin-bottom:16px;
+  }
+  .card h3{font-size:1.08rem;margin-bottom:8px;font-weight:700}
+  .card p{color:var(--muted);font-size:.91rem}
+  .card ul{list-style:none;margin-top:14px;display:grid;gap:7px}
+  .card li{font-size:.86rem;color:var(--muted);padding-left:20px;position:relative}
+  .card li::before{content:"✓";position:absolute;left:0;color:var(--teal);font-weight:800}
+
+  .imgband{border-radius:22px;overflow:hidden;box-shadow:var(--shadow);margin-top:12px}
+  .imgband img{width:100%;height:100%;object-fit:cover}
+
+  /* ---------- Agenda demo ---------- */
+  .agenda{background:linear-gradient(180deg,#f4fbfa,#ffffff);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .agenda-box{
+    background:#fff;border:1px solid var(--line);border-radius:22px;
+    box-shadow:var(--shadow);padding:26px;margin-top:38px;
+  }
+  .field{margin-bottom:18px}
+  .field label{display:block;font-size:.85rem;font-weight:700;margin-bottom:7px}
+  .field input,.field select{
+    width:100%;padding:13px 15px;border:1.5px solid var(--line);border-radius:12px;
+    font-family:inherit;font-size:.93rem;color:var(--ink);background:#fff;transition:.2s;
+  }
+  .field input:focus,.field select:focus{outline:none;border-color:var(--teal);box-shadow:0 0 0 4px rgba(13,148,136,.1)}
+  .slots{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+  .slot{
+    border:1.5px solid var(--line);background:#fff;border-radius:11px;padding:12px 8px;
+    font-family:inherit;font-size:.85rem;font-weight:600;color:var(--muted);cursor:pointer;transition:.18s;
+  }
+  .slot:hover{border-color:var(--teal);color:var(--teal-dark)}
+  .slot.active{background:linear-gradient(135deg,var(--teal),var(--blue));border-color:transparent;color:#fff}
+  .note{font-size:.8rem;color:var(--muted);margin-top:14px;background:var(--aqua);padding:12px 15px;border-radius:12px}
+  .confirm{
+    display:none;margin-top:18px;padding:18px;border-radius:14px;
+    background:#eafaf0;border:1px solid #b9e9cd;font-size:.9rem;
+  }
+  .confirm.show{display:block;animation:pop .4s ease}
+  @keyframes pop{from{opacity:0;transform:scale(.97)}to{opacity:1;transform:none}}
+
+  /* ---------- Resultados ---------- */
+  .res-box{
+    background:linear-gradient(160deg,var(--blue-deep),var(--teal-dark));
+    border-radius:24px;padding:30px;color:#fff;box-shadow:var(--shadow);margin-top:38px;
+  }
+  .res-box h3{font-size:1.2rem;margin-bottom:8px}
+  .res-box p.hint{color:rgba(255,255,255,.8);font-size:.9rem;margin-bottom:20px}
+  .res-form{display:flex;gap:10px;flex-wrap:wrap}
+  .res-form input{
+    flex:1;min-width:190px;padding:14px 16px;border-radius:12px;border:1px solid rgba(255,255,255,.3);
+    background:rgba(255,255,255,.12);color:#fff;font-family:inherit;font-size:.95rem;
+  }
+  .res-form input::placeholder{color:rgba(255,255,255,.6)}
+  .res-form input:focus{outline:none;border-color:#7ff0e0;background:rgba(255,255,255,.18)}
+  .res-form button{background:#fff;color:var(--blue-deep)}
+  .res-out{margin-top:22px}
+  .res-table{
+    width:100%;border-collapse:collapse;background:rgba(255,255,255,.08);
+    border-radius:14px;overflow:hidden;font-size:.88rem;
+  }
+  .res-table th,.res-table td{padding:12px 14px;text-align:left}
+  .res-table th{background:rgba(255,255,255,.12);font-weight:700;font-size:.8rem;text-transform:uppercase;letter-spacing:.06em}
+  .res-table tr{border-bottom:1px solid rgba(255,255,255,.1)}
+  .res-table td:nth-child(2){color:#7ff0e0;font-weight:700}
+  .badge-ok{background:#16a34a;color:#fff;border-radius:999px;padding:3px 11px;font-size:.74rem;font-weight:700}
+
+  /* ---------- Horarios ---------- */
+  .sched{display:grid;gap:14px;margin-top:34px}
+  .sched-row{
+    display:flex;justify-content:space-between;align-items:center;gap:14px;
+    background:#fff;border:1px solid var(--line);border-left:4px solid var(--teal);
+    border-radius:14px;padding:16px 20px;box-shadow:var(--shadow-sm);
+  }
+  .sched-row .day{font-weight:700;font-size:.95rem}
+  .sched-row .hrs{color:var(--teal-dark);font-weight:700;font-size:.93rem;white-space:nowrap}
+  .blocks{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:20px}
+  .block{background:var(--aqua);border-radius:14px;padding:15px;text-align:center}
+  .block strong{display:block;color:var(--blue-deep);font-size:.95rem}
+  .block small{color:var(--muted);font-size:.8rem;font-weight:600}
+
+  /* ---------- Testimonios ---------- */
+  .reviews{background:linear-gradient(180deg,#ffffff,#f4fbfa)}
+  .rev-head{
+    display:inline-flex;align-items:center;gap:16px;flex-wrap:wrap;justify-content:center;
+    background:#fff;border:1px solid var(--line);border-radius:18px;padding:16px 24px;
+    box-shadow:var(--shadow-sm);margin:0 auto 34px;
+  }
+  .rev-head .big{font-size:2.1rem;font-weight:800;color:var(--blue-deep);line-height:1}
+  .rev-head .s{color:#ffb703;letter-spacing:2px}
+  .rev-head small{color:var(--muted);font-size:.82rem;font-weight:600}
+  .rev-grid{display:grid;gap:18px}
+  .rev{
+    background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+    padding:22px;box-shadow:var(--shadow-sm);
+  }
+  .rev .s{color:#ffb703;font-size:.9rem;letter-spacing:1.5px}
+  .rev p{font-size:.9rem;color:var(--muted);margin:12px 0 16px}
+  .rev .who{display:flex;align-items:center;gap:11px}
+  .av{
+    width:38px;height:38px;border-radius:50%;display:grid;place-items:center;
+    background:linear-gradient(135deg,var(--teal),var(--blue));color:#fff;font-weight:700;font-size:.85rem;
+  }
+  .rev .who strong{font-size:.88rem;display:block}
+  .rev .who small{color:#9aa9b5;font-size:.76rem}
+
+  /* ---------- Ubicación ---------- */
+  .loc{display:grid;gap:26px;margin-top:36px}
+  .loc-info{display:grid;gap:14px}
+  .loc-item{display:flex;gap:14px;align-items:flex-start}
+  .loc-item .ic{width:44px;height:44px;flex:0 0 44px;border-radius:13px;background:var(--aqua);display:grid;place-items:center;font-size:1.1rem}
+  .loc-item strong{display:block;font-size:.92rem}
+  .loc-item span{color:var(--muted);font-size:.88rem}
+  .map-frame{border-radius:22px;overflow:hidden;box-shadow:var(--shadow);border:1px solid var(--line);min-height:280px}
+  .map-frame img{width:100%;height:100%;object-fit:cover;min-height:280px}
+
+  /* ---------- CTA final ---------- */
+  .cta-final{
+    background:linear-gradient(150deg,var(--blue-deep),var(--teal-dark));
+    border-radius:26px;padding:44px 30px;text-align:center;color:#fff;
+    box-shadow:var(--shadow);margin-top:20px;
+  }
+  .cta-final h2{font-size:1.6rem;letter-spacing:-.02em;margin-bottom:12px}
+  .cta-final p{color:rgba(255,255,255,.85);max-width:520px;margin:0 auto 26px;font-size:.97rem}
+
+  /* ---------- Footer ---------- */
+  footer{background:var(--ink);color:#c7d3dc;padding:48px 0 28px;font-size:.87rem;margin-top:60px}
+  .foot-grid{display:grid;gap:26px}
+  .foot-brand{display:flex;align-items:center;gap:10px;color:#fff;font-weight:800;font-size:1.1rem;margin-bottom:12px}
+  .foot-brand .dot{width:32px;height:32px;border-radius:10px;background:linear-gradient(135deg,var(--teal),#38bdf8);display:grid;place-items:center;color:#fff}
+  footer h4{color:#fff;font-size:.92rem;margin-bottom:12px}
+  footer a:hover{color:#7ff0e0}
+  .foot-links{display:grid;gap:8px}
+  .disclaimer{
+    margin-top:34px;padding-top:20px;border-top:1px solid rgba(255,255,255,.12);
+    font-size:.78rem;color:#8fa1ae;text-align:center;
+  }
+
+  /* ---------- WhatsApp float ---------- */
+  .wa-float{
+    position:fixed;bottom:20px;right:20px;z-index:60;
+    width:60px;height:60px;border-radius:50%;background:#25d366;
+    display:grid;place-items:center;box-shadow:0 12px 30px -8px rgba(37,211,102,.85);
+    transition:.25s;
+  }
+  .wa-float:hover{transform:scale(1.08)}
+  .wa-float svg{width:32px;height:32px;fill:#fff}
+  .wa-float::after{
+    content:"";position:absolute;inset:0;border-radius:50%;border:2px solid #25d366;
+    animation:ripple 2s infinite;
+  }
+  @keyframes ripple{0%{transform:scale(1);opacity:.7}100%{transform:scale(1.5);opacity:0}}
+
+  /* ---------- Desktop ---------- */
+  @media(min-width:860px){
+    .nav-links{display:flex}
+    .hero{padding:90px 0 110px}
+    .hero h1{font-size:3.1rem}
+    .hero-grid{grid-template-columns:1.25fr .75fr;align-items:center;gap:60px}
+    section{padding:88px 0}
+    h2.sec-title{font-size:2.3rem}
+    .cards{grid-template-columns:repeat(3,1fr)}
+    .rev-grid{grid-template-columns:repeat(3,1fr)}
+    .loc{grid-template-columns:1fr 1fr;align-items:center}
+    .blocks{grid-template-columns:repeat(4,1fr)}
+    .slots{grid-template-columns:repeat(4,1fr)}
+    .foot-grid{grid-template-columns:1.5fr 1fr 1fr}
+    .cta-final h2{font-size:2rem}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <div class="brand"><div class="dot">S</div>Sadi<span>Lab</span></div>
+    <nav class="nav-links">
+      <a href="#servicios">Servicios</a>
+      <a href="#agenda">Reservar turno</a>
+      <a href="#resultados">Resultados</a>
+      <a href="#horarios">Horarios</a>
+      <a href="#ubicacion">Ubicación</a>
+    </nav>
+    <a class="btn btn-wa" href="https://wa.me/593963404408?text=Hola%20SadiLab%2C%20quisiera%20informaci%C3%B3n%20sobre%20sus%20servicios." target="_blank" rel="noopener">WhatsApp</a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="pill">⭐ 5.0 en Google · 62 reseñas</span>
+      <h1>Su salud, con resultados <em>claros y a tiempo</em></h1>
+      <p class="lead">Laboratorio Clínico &amp; Consultorios Médicos SadiLab. Análisis clínicos, consulta médica y toma de muestras en Cuenca, con atención cercana y profesional.</p>
+      <div class="hero-cta">
+        <a class="btn btn-primary" href="#agenda">Reservar un turno</a>
+        <a class="btn btn-wa" href="https://wa.me/593963404408?text=Hola%20SadiLab%2C%20quisiera%20agendar%20una%20cita." target="_blank" rel="noopener">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.5 15.2L2 22l4.9-1.4A10 10 0 1 0 12 2Zm5.4 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-1.7-.1-1-.3-2.9-1.2-4.2-3.1-.9-1.3-1.1-2.2-1.1-2.7 0-.5.4-1.2.8-1.5.2-.2.4-.2.6-.2h.4c.2 0 .4-.1.6.4l.7 1.6c.1.2 0 .4-.1.5l-.3.4c-.1.1-.2.2 0 .4.2.3.7 1.1 1.5 1.8.9.8 1.6 1 1.9 1.2.2.1.4 0 .5-.1l.6-.7c.2-.2.3-.2.5-.1l1.5.7c.2.1.4.2.5.3.1.2 0 .8-.3 1.4Z"/></svg>
+          Escribir por WhatsApp
+        </a>
+      </div>
+      <div class="stars"><span class="s">★★★★★</span> 62 reseñas de pacientes en Google</div>
+    </div>
+
+    <div class="hero-card">
+      <h3>Información rápida</h3>
+      <div class="row">
+        <div class="ico">📍</div>
+        <div><strong>Vía Monay Baguanchi Paccha</strong><small>010101 Cuenca, Ecuador</small></div>
+      </div>
+      <div class="row">
+        <div class="ico">🕒</div>
+        <div><strong>Lun a Vie: 07:00 – 20:00</strong><small>Sábados: 08:00 – 14:00</small></div>
+      </div>
+      <div class="row">
+        <div class="ico">🩺</div>
+        <div><strong>Consulta médica</strong><small>4 bloques de atención de lunes a viernes</small></div>
+      </div>
+      <div class="row">
+        <div class="ico">📞</div>
+        <div><strong>+593 96 340 4408</strong><small>Teléfono y WhatsApp</small></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICIOS -->
+<section id="servicios">
+  <div class="wrap">
+    <div class="center reveal">
+      <span class="sec-tag">Nuestros servicios</span>
+      <h2 class="sec-title">Todo para su diagnóstico, en un solo lugar</h2>
+      <p class="sec-sub">Laboratorio clínico y consultorios médicos trabajando juntos para que usted tenga una atención ordenada y sin vueltas.</p>
+    </div>
+
+    <div class="cards">
+      <div class="card reveal">
+        <div class="ic">🧪</div>
+        <h3>Laboratorio Clínico</h3>
+        <p>Análisis de laboratorio realizados con procesos cuidados y equipos adecuados.</p>
+        <ul>
+          <li>Química sanguínea y hemogramas</li>
+          <li>Perfiles de control y seguimiento</li>
+          <li>Exámenes generales y especiales</li>
+        </ul>
+      </div>
+      <div class="card reveal">
+        <div class="ic">🩺</div>
+        <h3>Consulta Médica</h3>
+        <p>Atención médica en consultorios, con horarios amplios de lunes a viernes.</p>
+        <ul>
+          <li>Cuatro bloques de atención diaria</li>
+          <li>Historia clínica y seguimiento</li>
+          <li>Interpretación de sus resultados</li>
+        </ul>
+      </div>
+      <div class="card reveal">
+        <div class="ic">💉</div>
+        <h3>Toma de Muestras</h3>
+        <p>Personal capacitado para una toma de muestras cómoda y segura.</p>
+        <ul>
+          <li>Atención con cita previa</li>
+          <li>Preparación indicada por el personal</li>
+          <li>Entrega coordinada de resultados</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="imgband reveal">
+      <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?auto=format&fit=crop&w=1400&q=70" alt="Profesional de laboratorio clínico trabajando con muestras" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<!-- AGENDA DEMO -->
+<section id="agenda" class="agenda">
+  <div class="wrap">
+    <div class="center reveal">
+      <span class="sec-tag">Reserva en línea</span>
+      <h2 class="sec-title">Reserve su turno en pocos pasos</h2>
+      <p class="sec-sub">Elija el servicio, el día y uno de los horarios disponibles. La confirmación llega por WhatsApp.</p>
+    </div>
+
+    <div class="agenda-box reveal">
+      <div class="field">
+        <label for="agenda-servicio">Servicio</label>
+        <select id="agenda-servicio">
+          <option value="Consulta médica">Consulta médica</option>
+          <option value="Laboratorio clínico">Laboratorio clínico</option>
+          <option value="Toma de muestras">Toma de muestras</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="agenda-nombre">Nombre completo</label>
+        <input id="agenda-nombre" type="text" placeholder="Ej.: Ana Pérez">
+      </div>
+      <div class="field">
+        <label for="agenda-fecha">Fecha</label>
+        <input id="agenda-fecha" type="date">
+      </div>
+      <div class="field">
+        <label>Horario disponible</label>
+        <div class="slots" id="slots">
+          <button type="button" class="slot" data-h="07:00 - 10:00">07:00 - 10:00</button>
+          <button type="button" class="slot" data-h="10:00 - 14:00">10:00 - 14:00</button>
+          <button type="button" class="slot" data-h="14:00 - 18:30">14:00 - 18:30</button>
+          <button type="button" class="slot" data-h="18:30 - 20:00">18:30 - 20:00</button>
+        </div>
+        <div class="note">Bloques de consulta médica de lunes a viernes. Horario de laboratorio: lunes a viernes 07:00–20:00 y sábados 08:00–14:00.</div>
+      </div>
+      <button type="button" class="btn btn-primary" id="agenda-btn" style="width:100%;padding:15px">Confirmar turno</button>
+      <div class="confirm" id="agenda-confirm"></div>
+    </div>
+  </div>
+</section>
+
+<!-- RESULTADOS DEMO -->
+<section id="resultados">
+  <div class="wrap">
+    <div class="center reveal">
+      <span class="sec-tag">Consulta de resultados</span>
+      <h2 class="sec-title">Consulte sus resultados en línea</h2>
+      <p class="sec-sub">Ingrese su número de cédula o el código de su orden para ver el estado de sus exámenes.</p>
+    </div>
+
+    <div class="res-box reveal">
+      <h3>Portal de resultados</h3>
+      <p class="hint">Demostración del funcionamiento. En la versión final se conecta al sistema real del laboratorio.</p>
+      <form class="res-form" id="res-form" autocomplete="off">
+        <input id="res-input" type="text" placeholder="Cédula o código de orden (ej.: 0102030405)" aria-label="Cédula o código de orden">
+        <button class="btn btn-primary" type="submit">Consultar</button>
+      </form>
+      <div class="res-out" id="res-out"></div>
+    </div>
+  </div>
+</section>
+
+<!-- HORARIOS -->
+<section id="horarios">
+  <div class="wrap">
+    <div class="center reveal">
+      <span class="sec-tag">Horarios de atención</span>
+      <h2 class="sec-title">Amplios horarios para su comodidad</h2>
+      <p class="sec-sub">Atendemos de lunes a viernes durante todo el día y los sábados en la mañana.</p>
+    </div>
+
+    <div class="sched">
+      <div class="sched-row reveal"><span class="day">Lunes a Viernes</span><span class="hrs">07:00 – 20:00</span></div>
+      <div class="sched-row reveal"><span class="day">Sábados</span><span class="hrs">08:00 – 14:00</span></div>
+      <div class="sched-row reveal"><span class="day">Domingos</span><span class="hrs">Cerrado</span></div>
+    </div>
+
+    <div class="blocks reveal">
+      <div class="block"><strong>07:00 - 10:00</strong><small>Bloque 1</small></div>
+      <div class="block"><strong>10:00 - 14:00</strong><small>Bloque 2</small></div>
+      <div class="block"><strong>14:00 - 18:30</strong><small>Bloque 3</small></div>
+      <div class="block"><strong>18:30 - 20:00</strong><small>Bloque 4</small></div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIOS -->
+<section class="reviews">
+  <div class="wrap">
+    <div class="center reveal">
+      <span class="sec-tag">Lo que dicen nuestros pacientes</span>
+      <h2 class="sec-title">62 reseñas, 5.0 estrellas en Google</h2>
+    </div>
+
+    <div class="rev-head reveal">
+      <div class="big">5.0</div>
+      <div>
+        <div class="s">★★★★★</div>
+        <small>62 reseñas verificadas en Google</small>
+      </div>
+    </div>
+
+    <div class="rev-grid">
+      <div class="rev reveal">
+        <div class="s">★★★★★</div>
+        <p>Excelente atención, el personal es muy amable y los resultados estuvieron listos cuando me los indicaron. Muy recomendado.</p>
+        <div class="who"><div class="av">M</div><div><strong>María C.</strong><small>Paciente</small></div></div>
+      </div>
+      <div class="rev reveal">
+        <div class="s">★★★★★</div>
+        <p>La toma de muestras fue rápida y sin dolor. Me explicaron todo con paciencia. Un lugar muy confiable en Cuenca.</p>
+        <div class="who"><div class="av">J</div><div><strong>Jorge V.</strong><small>Paciente</small></div></div>
+      </div>
+      <div class="rev reveal">
+        <div class="s">★★★★★</div>
+        <p>Buena ubicación y atención puntual. Pude hacer mi consulta y mis exámenes en el mismo lugar. Quedé muy satisfecha.</p>
+        <div class="who"><div class="av">A</div><div><strong>Andrea S.</strong><small>Paciente</small></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- UBICACION -->
+<section id="ubicacion">
+  <div class="wrap">
+    <div class="center reveal">
+      <span class="sec-tag">Cómo llegar</span>
+      <h2 class="sec-title">Visítenos en Cuenca</h2>
+      <p class="sec-sub">Estamos en la Vía Monay Baguanchi Paccha. Abra la ubicación en Google Maps para llegar sin complicaciones.</p>
+    </div>
+
+    <div class="loc">
+      <div class="loc-info reveal">
+        <div class="loc-item">
+          <div class="ic">📍</div>
+          <div><strong>Dirección</strong><span>Vía Monay Baguanchi Paccha, 010101 Cuenca, Ecuador</span></div>
+        </div>
+        <div class="loc-item">
+          <div class="ic">📞</div>
+          <div><strong>Teléfono / WhatsApp</strong><span>+593 96 340 4408</span></div>
+        </div>
+        <div class="loc-item">
+          <div class="ic">🕒</div>
+          <div><strong>Horario</strong><span>Lun a Vie 07:00–20:00 · Sáb 08:00–14:00</span></div>
+        </div>
+        <a class="btn btn-primary" href="https://maps.google.com/?cid=11714711941040280384" target="_blank" rel="noopener" style="justify-self:start;margin-top:8px">Ver en Google Maps</a>
+      </div>
+      <a class="map-frame reveal" href="https://maps.google.com/?cid=11714711941040280384" target="_blank" rel="noopener">
+        <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=1200&q=70" alt="Consultorio médico moderno" loading="lazy">
+      </a>
+    </div>
+
+    <div class="cta-final reveal">
+      <h2>¿Listo para agendar su cita?</h2>
+      <p>Escríbanos por WhatsApp y con gusto le ayudamos a reservar su turno o resolver sus dudas.</p>
+      <a class="btn btn-wa" style="padding:15px 30px;font-size:1rem" href="https://wa.me/593963404408?text=Hola%20SadiLab%2C%20quisiera%20agendar%20una%20cita.%20%C2%BFMe%20pueden%20ayudar%3F" target="_blank" rel="noopener">Escribir por WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-brand"><div class="dot">S</div>SadiLab</div>
+        <p style="max-width:330px">Laboratorio Clínico &amp; Consultorios Médicos. Análisis clínicos, consulta médica y toma de muestras en Cuenca, Ecuador.</p>
+      </div>
+      <div>
+        <h4>Contacto</h4>
+        <div class="foot-links">
+          <a href="https://wa.me/593963404408?text=Hola%20SadiLab%2C%20quisiera%20informaci%C3%B3n." target="_blank" rel="noopener">WhatsApp: +593 96 340 4408</a>
+          <span>Vía Monay Baguanchi Paccha, 010101 Cuenca</span>
+          <a href="https://maps.google.com/?cid=11714711941040280384" target="_blank" rel="noopener">Ver ubicación en Google Maps</a>
+        </div>
+      </div>
+      <div>
+        <h4>Horarios</h4>
+        <div class="foot-links">
+          <span>Lunes a Viernes: 07:00 – 20:00</span>
+          <span>Sábados: 08:00 – 14:00</span>
+          <span>Domingos: Cerrado</span>
+        </div>
+      </div>
+    </div>
+    <div class="disclaimer">
+      Sitio de referencia hecho por Nocodeveloper. Para la versión final se usan fotos e información reales del negocio.
+    </div>
+  </div>
+</footer>
+
+<a class="wa-float" href="https://wa.me/593963404408?text=Hola%20SadiLab%2C%20quisiera%20informaci%C3%B3n%20sobre%20sus%20servicios." target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.5 15.2L2 22l4.9-1.4A10 10 0 1 0 12 2Zm5.4 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-1.7-.1-1-.3-2.9-1.2-4.2-3.1-.9-1.3-1.1-2.2-1.1-2.7 0-.5.4-1.2.8-1.5.2-.2.4-.2.6-.2h.4c.2 0 .4-.1.6.4l.7 1.6c.1.2 0 .4-.1.5l-.3.4c-.1.1-.2.2 0 .4.2.3.7 1.1 1.5 1.8.9.8 1.6 1 1.9 1.2.2.1.4 0 .5-.1l.6-.7c.2-.2.3-.2.5-.1l1.5.7c.2.1.4.2.5.3.1.2 0 .8-.3 1.4Z"/></svg>
+</a>
+
+<script>
+/* Reveal on scroll */
+(function(){
+  var els = document.querySelectorAll('.reveal');
+  if(!('IntersectionObserver' in window)){
+    els.forEach(function(e){e.classList.add('in')});
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if(en.isIntersecting){
+        en.target.classList.add('in');
+        io.unobserve(en.target);
+      }
+    });
+  },{threshold:.12, rootMargin:'0px 0px -40px 0px'});
+  els.forEach(function(e){io.observe(e)});
+})();
+
+/* Agenda demo */
+(function(){
+  var slots = document.querySelectorAll('.slot');
+  var selected = null;
+  slots.forEach(function(s){
+    s.addEventListener('click', function(){
+      slots.forEach(function(x){x.classList.remove('active')});
+      s.classList.add('active');
+      selected = s.getAttribute('data-h');
+    });
+  });
+
+  var fecha = document.getElementById('agenda-fecha');
+  var hoy = new Date();
+  var yyyy = hoy.getFullYear();
+  var mm = String(hoy.getMonth()+1).padStart(2,'0');
+  var dd = String(hoy.getDate()).padStart(2,'0');
+  fecha.min = yyyy+'-'+mm+'-'+dd;
+
+  document.getElementById('agenda-btn').addEventListener('click', function(){
+    var nombre = document.getElementById('agenda-nombre').value.trim();
+    var servicio = document.getElementById('agenda-servicio').value;
+    var f = fecha.value;
+    var out = document.getElementById('agenda-confirm');
+    if(!nombre || !f || !selected){
+      out.className = 'confirm show';
+      out.style.background = '#fff4e5';
+      out.style.borderColor = '#ffd8a8';
+      out.innerHTML = 'Complete su nombre, la fecha y elija un horario para continuar.';
+      return;
+    }
+    var d = new Date(f + 'T00:00:00');
+    var dias = ['domingo','lunes','martes','miércoles','jueves','viernes','sábado'];
+    var fechaTxt = dias[d.getDay()] + ' ' + String(d.getDate()).padStart(2,'0') + '/' + String(d.getMonth()+1).padStart(2,'0') + '/' + d.getFullYear();
+    out.className = 'confirm show';
+    out.style.background = '#eafaf0';
+    out.style.borderColor = '#b9e9cd';
+    out.innerHTML = '<strong>✔ Turno registrado (demostración)</strong><br>' +
+      nombre + ' · ' + servicio + '<br>' + fechaTxt + ' · ' + selected +
+      '<br><span style="color:#5b7183;font-size:.84rem">En la versión final el turno se confirma automáticamente y se avisa por WhatsApp.</span>';
+  });
+})();
+
+/* Resultados demo */
+(function(){
+  var form = document.getElementById('res-form');
+  var input = document.getElementById('res-input');
+  var out = document.getElementById('res-out');
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    var q = input.value.trim();
+    if(!q){
+      out.innerHTML = '<p style="color:#ffd8a8;font-size:.9rem">Ingrese su cédula o código de orden.</p>';
+      return;
+    }
+    var filas = [
+      ['Hemograma completo','12,4 g/dL','Dentro del rango'],
+      ['Glucosa en ayunas','92 mg/dL','Dentro del rango'],
+      ['Colesterol total','168 mg/dL','Dentro del rango'],
+      ['Perfil hepático','Normal','Dentro del rango']
+    ];
+    var code = 'SIM-' + (q.replace(/\D/g,'').slice(-6) || '000000');
+    var html = '<div style="margin-bottom:12px;font-size:.9rem">Resultados para <strong>' + q + '</strong> · Orden ' + code + '</div>';
+    html += '<table class="res-table"><thead><tr><th>Examen</th><th>Resultado</th><th>Estado</th></tr></thead><tbody>';
+    filas.forEach(function(f){
+      html += '<tr><td>'+f[0]+'</td><td>'+f[1]+'</td><td><span class="badge-ok">'+f[2]+'</span></td></tr>';
+    });
+    html += '</tbody></table>';
+    html += '<p style="margin-top:14px;font-size:.82rem;color:rgba(255,255,255,.75)">Ejemplo de demostración. Los resultados reales se entregan en el laboratorio o por los canales oficiales del negocio.</p>';
+    out.innerHTML = html;
+  });
+})();
+</script>
+</body>
+</html>
